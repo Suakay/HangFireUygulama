@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Message>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messages</title>
+</head>
+<body>
+    <h1>Messages</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in Model)
+            {
+                <tr>
+                    <td>@message.Id</td>
+                    <td>@message.MessageContent</td>
+                    <td>@message.CreatedAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!-- JavaScript ile mesajı ekrana yazdırma -->
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                var tableBody = document.getElementById('message-table-body');
+                var row = document.createElement('tr');
+                var cell1 = document.createElement('td');
+                var cell2 = document.createElement('td');
+                var cell3 = document.createElement('td');
+
+                cell1.textContent = ''; // ID alanını boş bırakabiliriz
+                cell2.textContent = 'Merhaba ';
+                cell3.textContent = new Date().toLocaleString(); // Şu anki tarihi ekliyoruz
+
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+
+                tableBody.appendChild(row);
+            }, 10000); // 1 saniye sonra çalışacak
+        }
+    </script>
+</body>
+<
+</html>
